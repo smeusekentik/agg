@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 #
 #   CIDR Aggregate CSV input from STDIIN
 #   Steve Meuse, 3/22/2022
@@ -18,6 +18,7 @@ for row in csv_reader:
 
 outlist = netaddr.cidr_merge(agglist)
 
+# Print the output. Hacky way to give it CSV formatting, there is probably a more elegant way to do this.
 for item in outlist:
     if item != outlist[-1]:
         newitem = "{},".format(item)

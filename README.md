@@ -1,6 +1,6 @@
 ## Agg.py
 
-This is a quick python script that takes CSV cidr blocks at STDIN and aggregates them. 
+This is a quick python script that takes CSV cidr blocks from a file or STDIN and aggregates them. 
 
 ## Usage
 

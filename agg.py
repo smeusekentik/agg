@@ -1,22 +1,33 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 #
 #   CIDR Aggregate CSV input from STDIIN
 #   Steve Meuse, 3/22/2022
 
-import sys,netaddr,csv
+import sys,csv
+import netaddr
+import fileinput
 
 agglist = []
 outlist = []
 
-csv_reader = csv.reader(sys.stdin)
+csv_reader = csv.reader(fileinput.input())
+# csv_reader = fileinput.input()
 for row in csv_reader:
     test = row[0]
     agglist.append(row[0])
 
 outlist = netaddr.cidr_merge(agglist)
 
-for aggs in outlist:
-    print(aggs.cidr)
+for item in outlist:
+    if item != outlist[-1]:
+        newitem = "{},".format(item)
+        print(newitem)
+    else:
+        print(item)
+
+
+# for aggs in outlist:
+#     print(aggs.cidr)
 
 inlines = len(agglist)
 outlines = len(outlist)
